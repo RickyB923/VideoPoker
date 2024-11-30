@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private Deck deck;
-    void Start()
+    protected Deck deck;
+    protected int credits;
+    protected int bet;
+    protected List<Card> hand;
+
+    [SerializeField] public PayTable payTable;
+
+    public static event Action gameInitialized;
+    public void Start()
     {
         deck = new Deck();
+        hand = new List<Card>();
+        payTable.Initialize();
+
+        gameInitialized?.Invoke();
     }
 }
