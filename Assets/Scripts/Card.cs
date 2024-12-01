@@ -31,6 +31,7 @@ public class Card
 
     public Suit suit { get; set; }
     public Number number { get; set; }
+    //public CardVisuals visuals;
 
     public Card(Suit newSuit, Number newNumber)
     {

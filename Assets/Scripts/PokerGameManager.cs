@@ -18,15 +18,51 @@ public class PokerGameManager : GameManager
         {
             Card newCard = deck.DealCard();    
             hand.Add(newCard);
-
+            cardSlots[i].currentCard = newCard;
+            cardSlots[i].isEmpty = false;
             GameObject cardObject = Instantiate(cardPrefab, cardSlots[i].transform);
-            CardVisuals cardVisuals = cardObject.GetComponent<CardVisuals>();
-            cardVisuals.SetCardVisuals(newCard.suit, newCard.number);
-            
-            Debug.Log($"{hand[i].number} of {hand[i].suit}");
+            cardSlots[i].visuals = cardObject.GetComponent<CardVisuals>();
+            cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
+        }
+    }
+    public void Deal()
+    {
+        int slotsEmpty = 0;
+        foreach(CardSlot slot in cardSlots)
+        {
+            if(!slot.shouldHold)
+            {
+                hand.Remove(slot.currentCard);
+                slot.isEmpty = true;
+                slotsEmpty++;
+            }
         }
         
+        foreach(CardSlot slot in cardSlots)
+        {
+            if(slot.isEmpty)
+            {
+                Card newCard = deck.DealCard();
+                hand.Add(newCard);
+                slot.visuals.SetCardVisuals(newCard.suit, newCard.number);
+                slot.currentCard = newCard;
+                slot.isEmpty = false;
+            }
+        }
+
+        foreach(Card card in hand)
+        {
+            Debug.Log($"{card.number} of {card.suit}");
+        }
+
+        EvaluateHand();
     }
-
-
+    void EvaluateHand()
+    {
+        //Debug.Log(evaluator.EvaluateHand(hand));
+        HandEvaluator.Hand handRank = evaluator.EvaluateHand(hand);
+        Debug.Log(handRank);
+        credits += (payTable.handTypes[(int)handRank]) * bet;
+        creditsText.text = credits.ToString();
+    }
 }

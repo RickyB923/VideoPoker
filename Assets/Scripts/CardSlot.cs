@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CardSlot : MonoBehaviour
 {
-    private Card currentCard;
-    private bool shouldHold;
+    public Card currentCard;
+    public CardVisuals visuals;
+    public bool isEmpty;
+    public bool shouldHold;
     [SerializeField] GameObject holdIcon;
     void Start()
     {
@@ -14,7 +16,6 @@ public class CardSlot : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("click");
         if(!shouldHold)
         {
             shouldHold = true;

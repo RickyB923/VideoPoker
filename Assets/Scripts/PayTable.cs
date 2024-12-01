@@ -17,14 +17,13 @@ public class PayTable : ScriptableObject
     public int straight;
     public int threeOfAKind;
     public int twoPair;
-    public int jacksOrBetter;
     public int fiveBetRoyalFlush;
 
     public int[] handTypes;
 
     public void Initialize()
     {
-        handTypes = new int[9];
+        handTypes = new int[8];
         handTypes[0] = royalFlush;
         handTypes[1] = straightFlush;
         handTypes[2] = fourOfAKind;
@@ -33,6 +32,5 @@ public class PayTable : ScriptableObject
         handTypes[5] = straight;
         handTypes[6] = threeOfAKind;
         handTypes[7] = twoPair;
-        handTypes[8] = jacksOrBetter;
     }
 }
