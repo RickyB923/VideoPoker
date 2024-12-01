@@ -21,3 +21,5 @@ MonoBehaviour:
   threeOfAKind: 3
   twoPair: 2
   jacksOrBetter: 1
+  fiveBetRoyalFlush: 4000
+  handTypes: fa0000003200000019000000090000000600000004000000030000000200000001000000

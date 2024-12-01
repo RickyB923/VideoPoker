@@ -11,6 +11,9 @@ public class GameManager : Singleton<GameManager>
     protected List<Card> hand;
 
     [SerializeField] public PayTable payTable;
+    [SerializeField] public GameObject cardPrefab;
+
+    [SerializeField] public CardSlot[] cardSlots;
 
     public static event Action gameInitialized;
     public void Start()

@@ -7,8 +7,4 @@ public class HandTypeDisplay : MonoBehaviour
 {
     public TextMeshProUGUI[] valueTexts;
     public int baseValue;
-    void Start()
-    {
-        
-    }
 }

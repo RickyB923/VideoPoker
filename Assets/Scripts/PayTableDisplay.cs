@@ -27,5 +27,7 @@ public class PayTableDisplay : MonoBehaviour
                 j++;
             }
         }
+        // To account for a 5 bet royal flush
+        handTypes[0].valueTexts[4].text = GameManager.Instance.payTable.fiveBetRoyalFlush.ToString();
     }
 }
