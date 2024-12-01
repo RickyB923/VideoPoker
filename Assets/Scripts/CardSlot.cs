@@ -8,11 +8,7 @@ public class CardSlot : MonoBehaviour
     public CardVisuals visuals;
     public bool isEmpty;
     public bool shouldHold;
-    [SerializeField] GameObject holdIcon;
-    void Start()
-    {
-        
-    }
+    [SerializeField] public GameObject holdIcon;
 
     public void OnClick()
     {

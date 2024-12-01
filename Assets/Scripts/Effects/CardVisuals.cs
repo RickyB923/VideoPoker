@@ -8,31 +8,32 @@ public class CardVisuals : MonoBehaviour
 {
     [SerializeField] public Image suit;
     [SerializeField] public TextMeshProUGUI numberText;
+    [SerializeField] Image backgroundImage;
 
     [SerializeField] Color redColor;
     [SerializeField] Color blackColor;
     private Color numberColor;
 
-    [SerializeField] Sprite[] suitSprites;
+    [SerializeField] Sprite[] cardSprites;
 
     public void SetCardVisuals(Card.Suit suit, Card.Number number)
     {
         switch (suit)
         {
             case Card.Suit.SPADES:
-                this.suit.sprite = suitSprites[0];
+                this.suit.sprite = cardSprites[0];
                 numberColor = blackColor;
                 break;
             case Card.Suit.HEARTS:
-                this.suit.sprite = suitSprites[1];
+                this.suit.sprite = cardSprites[1];
                 numberColor = redColor;
                 break;
             case Card.Suit.DIAMONDS:
-                this.suit.sprite = suitSprites[2];
+                this.suit.sprite = cardSprites[2];
                 numberColor = redColor;
                 break;
             case Card.Suit.CLUBS:
-                this.suit.sprite = suitSprites[3];
+                this.suit.sprite = cardSprites[3];
                 numberColor = blackColor;
                 break;
         }
@@ -79,7 +80,28 @@ public class CardVisuals : MonoBehaviour
                 numberText.text = "K";
                 break;
         }
+    }
+    public void UpdateCardVisuals()
+    {
+        StartCoroutine(PlayCardFlipEffect());
+    }
+    public IEnumerator PlayCardFlipEffect()
+    {
+        TurnCardFaceDown();
 
-
+        yield return new WaitForSeconds(0.2f);
+        TurnCardFaceUp();
+    }
+    public void TurnCardFaceDown()
+    {
+        suit.enabled = false;
+        numberText.enabled = false;
+        backgroundImage.sprite = cardSprites[4];
+    }
+    public void TurnCardFaceUp()
+    {
+        suit.enabled = true;
+        numberText.enabled = true;
+        backgroundImage.sprite = null;
     }
 }

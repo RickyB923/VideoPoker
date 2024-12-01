@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -304,10 +304,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suit: {fileID: 8535308158855990843}
   numberText: {fileID: 5663467633006983720}
+  backgroundImage: {fileID: 2544967260090532001}
   redColor: {r: 0.6981132, g: 0.009878943, b: 0.009878943, a: 1}
   blackColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
-  suitSprites:
+  cardSprites:
   - {fileID: 21300000, guid: 3260de1b9427b0f4cbcded5e6b4f96b8, type: 3}
   - {fileID: 21300000, guid: 8a6b6942849327b468e9370fbaa98fce, type: 3}
   - {fileID: 21300000, guid: 8b752f0b8fd04ad4aac7291a94edaad0, type: 3}
   - {fileID: 21300000, guid: bb9dd07dd68e49f49a0c8a1f25ce5352, type: 3}
+  - {fileID: 21300000, guid: d272f1d20e05fc246be459989e31023a, type: 3}

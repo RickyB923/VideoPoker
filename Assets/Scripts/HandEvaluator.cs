@@ -16,7 +16,8 @@ public class HandEvaluator
         THREE_OF_A_KIND,
         TWO_PAIR,
         //ONE_PAIR,
-        HIGH_CARD,
+        //HIGH_CARD,
+        LOSE
     }
     public Hand EvaluateHand(List<Card> hand)
     {
@@ -29,7 +30,8 @@ public class HandEvaluator
         if (IsThreeOfAKind(hand)) return Hand.THREE_OF_A_KIND;
         if (IsTwoPair(hand)) return Hand.TWO_PAIR;
         //if (IsOnePair(hand)) return Hand.ONE_PAIR;
-        return Hand.HIGH_CARD;
+        return Hand.LOSE;
+
     }
     private bool IsRoyalFlush(List<Card> hand)
     {
@@ -87,10 +89,4 @@ public class HandEvaluator
         var rankGroups = hand.GroupBy(card => card.number);
         return rankGroups.Count(group => group.Count() == 2) == 2;
     }
-
-    //private bool IsOnePair(List<Card> hand)
-    //{
-    //    var rankGroups = hand.GroupBy(card => card.number);
-    //    return rankGroups.Any(group => group.Count() == 2);
-    //}
 }
