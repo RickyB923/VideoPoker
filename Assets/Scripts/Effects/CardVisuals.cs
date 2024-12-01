@@ -88,8 +88,9 @@ public class CardVisuals : MonoBehaviour
     public IEnumerator PlayCardFlipEffect()
     {
         TurnCardFaceDown();
-
+        GameManager.Instance.display.SetAllButtonsActive(false);
         yield return new WaitForSeconds(0.2f);
+        GameManager.Instance.display.SetAllButtonsActive(true);
         TurnCardFaceUp();
     }
     public void TurnCardFaceDown()
@@ -103,5 +104,6 @@ public class CardVisuals : MonoBehaviour
         suit.enabled = true;
         numberText.enabled = true;
         backgroundImage.sprite = null;
+        StopAllCoroutines();
     }
 }

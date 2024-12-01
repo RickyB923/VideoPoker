@@ -15,8 +15,6 @@ public class HandEvaluator
         STRAIGHT,
         THREE_OF_A_KIND,
         TWO_PAIR,
-        //ONE_PAIR,
-        //HIGH_CARD,
         LOSE
     }
     public Hand EvaluateHand(List<Card> hand)
@@ -29,7 +27,6 @@ public class HandEvaluator
         if (IsStraight(hand)) return Hand.STRAIGHT;
         if (IsThreeOfAKind(hand)) return Hand.THREE_OF_A_KIND;
         if (IsTwoPair(hand)) return Hand.TWO_PAIR;
-        //if (IsOnePair(hand)) return Hand.ONE_PAIR;
         return Hand.LOSE;
 
     }
@@ -64,7 +61,6 @@ public class HandEvaluator
         var sortedRanks = hand.Select(card => (int)card.number).OrderBy(rank => rank).ToList();
         if (sortedRanks.Last() == (int)Card.Number.ACE && sortedRanks.First() == (int)Card.Number.TWO)
         {
-            // Handle A-2-3-4-5 as a valid straight (wheel)
             sortedRanks.Remove(sortedRanks.Last());
             sortedRanks.Insert(0, 1);
         }

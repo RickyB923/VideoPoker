@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PokerGameManager : GameManager
 {
+    private bool isFirstGame;
     private bool hasDealtFirstHand;
+    
     new void Start()
     {
         base.Start();
+        isFirstGame = true;
     }
 
     public void StartGame()
@@ -22,7 +25,8 @@ public class PokerGameManager : GameManager
 
             GameObject cardObject = Instantiate(cardPrefab, cardSlots[i].transform);
             cardSlots[i].visuals = cardObject.GetComponent<CardVisuals>();
-            cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);                         
+            cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
+            isFirstGame = false;
         }       
     }
     public void DealSecondHand()
@@ -51,6 +55,11 @@ public class PokerGameManager : GameManager
                 slot.isEmpty = false;
             }
         }
+        foreach (CardSlot slot in cardSlots)
+        {
+            slot.shouldHold = false;
+            slot.holdIcon.SetActive(false);
+        }
         EvaluateHand();
     }
     void EvaluateHand()
@@ -62,6 +71,7 @@ public class PokerGameManager : GameManager
             credits += (payTable.handTypes[(int)handRank]) * bet;
             creditsText.text = credits.ToString();
         }
+        StartCoroutine(display.DisplayEvaluationMessage(handRank));
     }
     public void OnDealButtonClick()
     {
@@ -70,27 +80,63 @@ public class PokerGameManager : GameManager
             // Reseting the deck and card slots
             deck.ShuffleDeck();
             hand.Clear();
-            foreach(CardSlot slot in cardSlots)
+
+            if (credits >= bet)
             {
-                slot.shouldHold = false;
-                slot.holdIcon.SetActive(false);
-            }
-            if(credits >= bet)
-            {
-                StartGame();
+                if(isFirstGame)
+                {
+                    StartGame();
+                }
+                else
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Card newCard = deck.DealCard();
+                        hand.Add(newCard);
+                        cardSlots[i].visuals.TurnCardFaceUp();
+                        cardSlots[i].visuals.UpdateCardVisuals();
+                        cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
+                        cardSlots[i].currentCard = newCard;
+                        cardSlots[i].isEmpty = false;
+                    }
+                }
+                
+
+
                 credits -= bet;
                 creditsText.text = credits.ToString();
+                
                 hasDealtFirstHand = true;
             }
             else
             {
-                //TODO display message not enough credits
+                StartCoroutine(display.DisplayMessage("Not Enough Credits"));
             }
         }
         else
         {
             DealSecondHand();
             hasDealtFirstHand = false;
+        }
+    }
+    public void RaiseBet()
+    {
+        if (hasDealtFirstHand)
+            return;
+        if (bet < 5)
+        {
+            bet++;
+            betText.text = bet.ToString();
+        }
+    }
+    public void LowerBet()
+    {
+        if (hasDealtFirstHand)
+            return;
+        if (bet > 1)
+        {
+            bet--;
+            betText.text = bet.ToString();
         }
     }
 }

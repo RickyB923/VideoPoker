@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     protected Deck deck;
-    protected int credits = 1000;
+    protected int credits = 5;
     protected int bet = 1;
     protected List<Card> hand;
     protected HandEvaluator evaluator;
@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public CardSlot[] cardSlots;
     [SerializeField] public TextMeshProUGUI creditsText;
     [SerializeField] public TextMeshProUGUI betText;
+    public DisplayCanvas display;
 
     public static event Action gameInitialized;
     public void Start()
@@ -28,25 +29,11 @@ public class GameManager : Singleton<GameManager>
 
         creditsText.text = credits.ToString();
         betText.text = bet.ToString();
+        display = FindObjectOfType<DisplayCanvas>();
         payTable.Initialize();
 
         gameInitialized?.Invoke();
     }
 
-    public void RaiseBet()
-    {
-        if(bet < 5)
-        {
-            bet++;
-            betText.text = bet.ToString();
-        }
-    }
-    public void LowerBet()
-    {
-        if(bet > 1)
-        {
-            bet--;
-            betText.text = bet.ToString();
-        }
-    }
+    
 }
