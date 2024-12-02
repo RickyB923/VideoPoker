@@ -11,6 +11,7 @@ public class DisplayCanvas : MonoBehaviour
     [SerializeField] public GameObject mainMessageDisplay;
     [SerializeField] public TextMeshProUGUI mainMessageText;
     [SerializeField] public GameObject playAgain;
+    [SerializeField] public GameObject deal;
 
     [SerializeField] public Button[] buttons;
     [SerializeField] CardSlot[] cardSlots;

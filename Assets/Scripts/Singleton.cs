@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : Component // The base Singleton that GameManager inherits from
 {
+    [SerializeField] bool shouldDestroyOnLoad;
     private static T instance;
     public static T Instance
     {
@@ -27,7 +28,10 @@ public class Singleton<T> : MonoBehaviour where T : Component // The base Single
         if (instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            if(!shouldDestroyOnLoad)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
         else
         {

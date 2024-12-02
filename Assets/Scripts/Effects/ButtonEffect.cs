@@ -8,7 +8,7 @@ using TMPro;
 public class ButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Image image;
-    //private AudioSource audioSource;
+    private AudioSource audioSource;
     [SerializeField] float imageSizeIncrease;
     [Tooltip("0 = Mouse Over SFX, 1 = Mouse Down SFX")]
     [SerializeField] AudioClip[] audioClips;
@@ -16,7 +16,7 @@ public class ButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     {
         image = GetComponent<Image>();
         //buttonText = GetComponentInChildren<TextMeshProUGUI>();
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -31,6 +31,8 @@ public class ButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        //audioSource.PlayOneShot(audioClips[1]);
+        audioSource.PlayOneShot(audioClips[1]);
+        if (image == null) return;
+        image.transform.localScale -= Vector3.one * imageSizeIncrease;
     }
 }

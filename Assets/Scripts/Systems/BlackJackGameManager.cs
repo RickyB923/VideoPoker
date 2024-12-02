@@ -23,6 +23,7 @@ public class BlackJackGameManager : GameManager
     public void StartGame()
     {
         display.SetAllButtonsActive(true);
+        display.deal.SetActive(false);
         display.mainMessageDisplay.SetActive(false);
         isBetweenGames = false;
         credits -= bet;
@@ -60,6 +61,11 @@ public class BlackJackGameManager : GameManager
             {
                 cardSlots[i].visuals.SetCardVisualsActive(false);
                 houseCardSlots[i].visuals.SetCardVisualsActive(false);
+            }
+            if (EvaluateHand(playerHand) == 21) // Checks if the player has a natural Blackjack
+            {
+                StartCoroutine(display.DisplayInbetweenGameScreen("Blackjack!"));
+                BlackJack();
             }
         }
     }
@@ -191,7 +197,7 @@ public class BlackJackGameManager : GameManager
     }
     public bool ShouldHouseHit()
     {
-        if(EvaluateHand(houseHand) <= 16) // House hits on 16 or below
+        if(EvaluateHand(houseHand) < 17) // House hits on 16 or below
         {
             return true;
         }
@@ -203,19 +209,13 @@ public class BlackJackGameManager : GameManager
     public int EvaluateHand(List<Card> hand)
     {
         int total = 0;
+        int numberOfAces = 0;
         foreach(Card card in hand)
         {
-            switch(card.number) // Counts face cards as 10, and Aces as 1 or 11
+            switch(card.number) // Counts face cards as 10, and counts the number of Aces
             {
                 case Card.Number.ACE:
-                    if(total + 11 > 21)
-                    {
-                        total += 1;
-                    }
-                    else
-                    {
-                        total += 11;
-                    }
+                    numberOfAces++;
                     break;
                 case Card.Number.JACK:
                     total += 10;
@@ -231,16 +231,16 @@ public class BlackJackGameManager : GameManager
                     break;
             }        
         }
-        if(total > 21) // Evaluates the hand again to recount the value of an Ace
-        {
-            foreach(Card card in hand)
+        if(total <= 10) // Determines the value of an Ace depending on the current value of the hand
+        { 
+            if(total + (numberOfAces ) * 11 <= 21) 
             {
-                if(card.number == Card.Number.ACE)
-                {
-                    total -= 11;
-                    total += 1;
-                }
+                total += (numberOfAces * 11);
             }
+        }
+        else if(total > 10)
+        {
+            total += (numberOfAces * 1);
         }
         return total;
     }
@@ -252,12 +252,10 @@ public class BlackJackGameManager : GameManager
         {
             bet++;
             betText.text = bet.ToString();
-            Debug.Log("Raise");
         }
     }
     public void LowerBet()
     {
-        Debug.Log("Lower");
         if (!isBetweenGames)
             return;
         if (bet > 1)
