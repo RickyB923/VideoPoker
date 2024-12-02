@@ -10,11 +10,24 @@ public class PokerGameManager : GameManager
     new void Start()
     {
         base.Start();
+        display.mainMessageDisplay.SetActive(true);
+        display.mainMessageText.text = "Poker";
+        foreach (CardSlot slot in cardSlots)
+        {
+            slot.isEmpty = true;
+            GameObject cardObject = Instantiate(cardPrefab, slot.transform);
+            slot.visuals = cardObject.GetComponent<CardVisuals>();
+            slot.visuals.TurnCardFaceDown();
+            slot.canClick = false;
+        }
         isFirstGame = true;
     }
 
     public void StartGame()
     {
+
+        display.SetAllButtonsActive(true);
+        display.mainMessageDisplay.SetActive(false);
         //Deals 5 cards to the player at the start of the game
         for (int i = 0; i < 5; i++)
         {
@@ -23,8 +36,9 @@ public class PokerGameManager : GameManager
             cardSlots[i].currentCard = newCard;
             cardSlots[i].isEmpty = false;
 
-            GameObject cardObject = Instantiate(cardPrefab, cardSlots[i].transform);
-            cardSlots[i].visuals = cardObject.GetComponent<CardVisuals>();
+            // GameObject cardObject = Instantiate(cardPrefab, cardSlots[i].transform);
+            //cardSlots[i].visuals = cardObject.GetComponent<CardVisuals>();
+            cardSlots[i].visuals.TurnCardFaceUp();
             cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
             isFirstGame = false;
         }       
@@ -34,6 +48,7 @@ public class PokerGameManager : GameManager
         int slotsEmpty = 0;
         foreach(CardSlot slot in cardSlots)
         {
+            slot.canClick = false;
             if(!slot.shouldHold)
             {
                 playerHand.Remove(slot.currentCard);
@@ -81,6 +96,7 @@ public class PokerGameManager : GameManager
             deck.ShuffleDeck();
             playerHand.Clear();
 
+
             if (credits >= bet)
             {
                 if(isFirstGame)
@@ -100,7 +116,10 @@ public class PokerGameManager : GameManager
                         cardSlots[i].isEmpty = false;
                     }
                 }
-                
+                foreach (CardSlot slot in cardSlots)
+                {
+                    slot.canClick = true;
+                }
 
 
                 credits -= bet;

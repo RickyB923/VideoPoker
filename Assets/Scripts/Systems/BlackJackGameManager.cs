@@ -242,7 +242,6 @@ public class BlackJackGameManager : GameManager
                 }
             }
         }
-        //Debug.Log(total);
         return total;
     }
     public void RaiseBet()
@@ -253,16 +252,19 @@ public class BlackJackGameManager : GameManager
         {
             bet++;
             betText.text = bet.ToString();
+            Debug.Log("Raise");
         }
     }
     public void LowerBet()
     {
+        Debug.Log("Lower");
         if (!isBetweenGames)
             return;
         if (bet > 1)
         {
             bet--;
             betText.text = bet.ToString();
+            
         }
     }
 }

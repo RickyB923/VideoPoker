@@ -18,7 +18,7 @@ public class CardVisuals : MonoBehaviour
 
     public void SetCardVisuals(Card.Suit suit, Card.Number number)
     {
-        SetCardVisualsActive(true);
+        //SetCardVisualsActive(true);
         switch (suit)
         {
             case Card.Suit.SPADES:

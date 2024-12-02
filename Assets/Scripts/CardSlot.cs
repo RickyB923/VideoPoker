@@ -8,19 +8,23 @@ public class CardSlot : MonoBehaviour
     public CardVisuals visuals;
     public bool isEmpty;
     public bool shouldHold;
+    public bool canClick;
     [SerializeField] public GameObject holdIcon;
 
     public void OnClick()
     {
-        if(!shouldHold)
+        if(canClick)
         {
-            shouldHold = true;
-            holdIcon.SetActive(true);
-        }
-        else
-        {
-            shouldHold = false;
-            holdIcon.SetActive(false);
-        }
+            if (!shouldHold)
+            {
+                shouldHold = true;
+                holdIcon.SetActive(true);
+            }
+            else
+            {
+                shouldHold = false;
+                holdIcon.SetActive(false);
+            }
+        }     
     }
 }

@@ -15,10 +15,10 @@ MonoBehaviour:
   royalFlush: 250
   straightFlush: 50
   fourOfAKind: 25
-  fullHouse: 9
+  fullHouse: 10
   flush: 6
   straight: 4
   threeOfAKind: 3
   twoPair: 2
   fiveBetRoyalFlush: 4000
-  handTypes: fa00000032000000190000000900000006000000040000000300000002000000
+  handTypes: fa00000032000000190000000a00000006000000040000000300000002000000
