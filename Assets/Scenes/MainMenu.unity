@@ -1049,9 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!114 &1250826488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,9 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!114 &1580632642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,9 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!114 &2054105152
 MonoBehaviour:
   m_ObjectHideFlags: 0

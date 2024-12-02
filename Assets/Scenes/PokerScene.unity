@@ -3999,7 +3999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5120949241102223106, guid: 68c6ea4b82c247b48a2f9506a301e192, type: 3}
       propertyPath: buttons.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5120949241102223106, guid: 68c6ea4b82c247b48a2f9506a301e192, type: 3}
       propertyPath: cardSlots.Array.size
@@ -4619,9 +4619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!1 &1261159743
 GameObject:
   m_ObjectHideFlags: 0
@@ -6875,9 +6873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!1 &1647946093
 GameObject:
   m_ObjectHideFlags: 0

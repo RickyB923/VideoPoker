@@ -12,11 +12,16 @@ public class DisplayCanvas : MonoBehaviour
     [SerializeField] public TextMeshProUGUI mainMessageText;
     [SerializeField] public GameObject playAgain;
     [SerializeField] public GameObject deal;
+    private Button dealButton;
 
     [SerializeField] public Button[] buttons;
     [SerializeField] CardSlot[] cardSlots;
 
     [SerializeField] float messageDisplayTime;
+    private void Start()
+    {
+        dealButton = deal.GetComponent<Button>();
+    }
     public IEnumerator DisplayEvaluationMessage(HandEvaluator.Hand handRank)
     {
         switch (handRank)
@@ -50,9 +55,9 @@ public class DisplayCanvas : MonoBehaviour
                 break;
         }
         mainMessageDisplay.SetActive(true);
-        SetAllButtonsActive(false);
+        dealButton.enabled = false;
         yield return new WaitForSeconds(messageDisplayTime);
-        SetAllButtonsActive(true);
+        dealButton.enabled = true;
         mainMessageDisplay.SetActive(false);
         foreach(CardSlot slot in cardSlots)
         {

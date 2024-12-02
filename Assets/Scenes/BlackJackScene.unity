@@ -713,9 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!224 &273545814 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7216295682211146525, guid: cf10cdbec79596941be12757a160c8e9, type: 3}
@@ -2718,9 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageSizeIncrease: 0.1
-  audioClips:
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
-  - {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ad7ba47d98ad674ebb3fa70bd6446fa, type: 3}
 --- !u!1 &1315906344
 GameObject:
   m_ObjectHideFlags: 0

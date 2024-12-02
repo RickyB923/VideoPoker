@@ -6,7 +6,6 @@ public class PokerGameManager : GameManager
 {
     private bool isFirstGame;
     private bool hasDealtFirstHand;
-    
     new void Start()
     {
         base.Start();
@@ -25,19 +24,14 @@ public class PokerGameManager : GameManager
 
     public void StartGame()
     {
-
         display.SetAllButtonsActive(true);
-        display.mainMessageDisplay.SetActive(false);
-        //Deals 5 cards to the player at the start of the game
-        for (int i = 0; i < 5; i++)
+        display.mainMessageDisplay.SetActive(false);       
+        for (int i = 0; i < 5; i++) //Deals 5 cards to the player at the start of the game
         {
             Card newCard = deck.DealCard();
             playerHand.Add(newCard);
             cardSlots[i].currentCard = newCard;
             cardSlots[i].isEmpty = false;
-
-            // GameObject cardObject = Instantiate(cardPrefab, cardSlots[i].transform);
-            //cardSlots[i].visuals = cardObject.GetComponent<CardVisuals>();
             cardSlots[i].visuals.TurnCardFaceUp();
             cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
             isFirstGame = false;
@@ -56,14 +50,12 @@ public class PokerGameManager : GameManager
                 slotsEmpty++;
             }
         }
-        
         foreach(CardSlot slot in cardSlots)
         {
             if(slot.isEmpty)
             {
                 Card newCard = deck.DealCard();
                 playerHand.Add(newCard);
-                
                 slot.visuals.UpdateCardVisuals();
                 slot.visuals.SetCardVisuals(newCard.suit, newCard.number);
                 slot.currentCard = newCard;
@@ -101,8 +93,6 @@ public class PokerGameManager : GameManager
             // Reseting the deck and card slots
             deck.ShuffleDeck();
             playerHand.Clear();
-
-
             if (credits >= bet)
             {
                 if(isFirstGame)
@@ -126,11 +116,8 @@ public class PokerGameManager : GameManager
                 {
                     slot.canClick = true;
                 }
-
-
                 credits -= bet;
-                creditsText.text = credits.ToString();
-                
+                creditsText.text = credits.ToString();              
                 hasDealtFirstHand = true;
             }
             else

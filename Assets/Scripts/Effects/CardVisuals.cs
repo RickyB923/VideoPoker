@@ -16,9 +16,8 @@ public class CardVisuals : MonoBehaviour
 
     [SerializeField] Sprite[] cardSprites;
 
-    public void SetCardVisuals(Card.Suit suit, Card.Number number)
+    public void SetCardVisuals(Card.Suit suit, Card.Number number) // Sets the cards sprites and text based on its suit and number
     {
-        //SetCardVisualsActive(true);
         switch (suit)
         {
             case Card.Suit.SPADES:
@@ -82,7 +81,7 @@ public class CardVisuals : MonoBehaviour
                 break;
         }
     }
-    public void UpdateCardVisuals()
+    public void UpdateCardVisuals() // Flips the card and updates its visuals
     {
         StartCoroutine(PlayCardFlipEffect());
     }
@@ -98,13 +97,13 @@ public class CardVisuals : MonoBehaviour
     {
         suit.enabled = false;
         numberText.enabled = false;
-        backgroundImage.sprite = cardSprites[4];
+        backgroundImage.sprite = cardSprites[5];
     }
     public void TurnCardFaceUp()
     {
         suit.enabled = true;
         numberText.enabled = true;
-        backgroundImage.sprite = null;
+        backgroundImage.sprite = cardSprites[4];
         StopAllCoroutines();
     }
     public void SetCardVisualsActive(bool shouldBeActive) // For making cards visible or invisible
