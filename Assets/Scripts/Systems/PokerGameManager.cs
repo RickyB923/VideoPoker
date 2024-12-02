@@ -92,7 +92,6 @@ public class PokerGameManager : GameManager
         {
             // Reseting the deck and card slots
             deck = new Deck();
-            deck.ShuffleDeck();
             playerHand.Clear();
             if (credits >= bet)
             {

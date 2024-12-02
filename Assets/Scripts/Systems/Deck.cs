@@ -17,14 +17,12 @@ public class Deck
     void InitializeDeck()
     {
         cards = new List<Card>();
-
         for (int i = 1; i < Enum.GetNames(typeof(Card.Suit)).Length + 1; i++)
         {
             for (int j = 1; j < Enum.GetNames(typeof(Card.Number)).Length + 1; j++)
             {
                 Card newCard = new Card((Card.Suit)i, (Card.Number)j);
-                cards.Add(newCard);
-                
+                cards.Add(newCard);            
             }
         }
     }

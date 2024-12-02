@@ -93,7 +93,7 @@ public class BlackJackGameManager : GameManager
         isBetweenGames = false;
         credits -= bet;
         creditsText.text = credits.ToString();
-        deck.ShuffleDeck();
+        deck = new Deck();
         playerHand.Clear();
         playerHandValue = 0;
         houseHand.Clear();
