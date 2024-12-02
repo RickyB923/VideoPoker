@@ -8,10 +8,11 @@ using TMPro;
 /// </summary>
 public class DisplayCanvas : MonoBehaviour
 {
-    [SerializeField] GameObject mainMessageDisplay;
-    [SerializeField] TextMeshProUGUI mainMessageText;
+    [SerializeField] public GameObject mainMessageDisplay;
+    [SerializeField] public TextMeshProUGUI mainMessageText;
+    [SerializeField] public GameObject playAgain;
 
-    [SerializeField] Button[] buttons;
+    [SerializeField] public Button[] buttons;
     [SerializeField] CardSlot[] cardSlots;
 
     [SerializeField] float messageDisplayTime;
@@ -67,6 +68,22 @@ public class DisplayCanvas : MonoBehaviour
         SetAllButtonsActive(true);
         mainMessageDisplay.SetActive(false);
     }
+    public IEnumerator DisplayInbetweenGameScreen(string message)
+    {
+        StartCoroutine(DisplayMessage(message));
+        yield return new WaitForSeconds(messageDisplayTime);
+        mainMessageText.text = "Play Again?";
+        mainMessageDisplay.SetActive(true);
+        playAgain.SetActive(true);
+        SetAllButtonsActive(false);
+        foreach (CardSlot slot in cardSlots)
+        {
+            if (!slot.isEmpty)
+            {
+                slot.visuals.TurnCardFaceDown();
+            }           
+        }
+    }
 
     public void SetAllButtonsActive(bool shouldBeActive) // For making sure the player cannot input any commands during transition sequences
     {
@@ -74,14 +91,14 @@ public class DisplayCanvas : MonoBehaviour
         {
             foreach (Button b in buttons)
             {
-                b.interactable = true;
+                b.gameObject.SetActive(true);
             }
         }
         else
         {
             foreach (Button b in buttons)
             {
-                b.interactable = false;
+                b.gameObject.SetActive(false);
             }
         }
     }

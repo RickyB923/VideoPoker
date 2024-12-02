@@ -18,6 +18,7 @@ public class CardVisuals : MonoBehaviour
 
     public void SetCardVisuals(Card.Suit suit, Card.Number number)
     {
+        SetCardVisualsActive(true);
         switch (suit)
         {
             case Card.Suit.SPADES:
@@ -105,5 +106,11 @@ public class CardVisuals : MonoBehaviour
         numberText.enabled = true;
         backgroundImage.sprite = null;
         StopAllCoroutines();
+    }
+    public void SetCardVisualsActive(bool shouldBeActive) // For making cards visible or invisible
+    {
+        suit.enabled = shouldBeActive;
+        numberText.enabled = shouldBeActive;
+        backgroundImage.enabled = shouldBeActive;
     }
 }

@@ -7,9 +7,9 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     protected Deck deck;
-    protected int credits = 5;
+    protected int credits = 100;
     protected int bet = 1;
-    protected List<Card> hand;
+    protected List<Card> playerHand;
     protected HandEvaluator evaluator;
 
     [SerializeField] public PayTable payTable;
@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     public void Start()
     {
         deck = new Deck();
-        hand = new List<Card>();
+        playerHand = new List<Card>();
         evaluator = new HandEvaluator();
 
         creditsText.text = credits.ToString();
@@ -33,7 +33,5 @@ public class GameManager : Singleton<GameManager>
         payTable.Initialize();
 
         gameInitialized?.Invoke();
-    }
-
-    
+    }    
 }

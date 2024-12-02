@@ -19,7 +19,7 @@ public class PokerGameManager : GameManager
         for (int i = 0; i < 5; i++)
         {
             Card newCard = deck.DealCard();
-            hand.Add(newCard);
+            playerHand.Add(newCard);
             cardSlots[i].currentCard = newCard;
             cardSlots[i].isEmpty = false;
 
@@ -36,7 +36,7 @@ public class PokerGameManager : GameManager
         {
             if(!slot.shouldHold)
             {
-                hand.Remove(slot.currentCard);
+                playerHand.Remove(slot.currentCard);
                 slot.isEmpty = true;
                 slotsEmpty++;
             }
@@ -47,7 +47,7 @@ public class PokerGameManager : GameManager
             if(slot.isEmpty)
             {
                 Card newCard = deck.DealCard();
-                hand.Add(newCard);
+                playerHand.Add(newCard);
                 
                 slot.visuals.UpdateCardVisuals();
                 slot.visuals.SetCardVisuals(newCard.suit, newCard.number);
@@ -64,7 +64,7 @@ public class PokerGameManager : GameManager
     }
     void EvaluateHand()
     {
-        HandEvaluator.Hand handRank = evaluator.EvaluateHand(hand);
+        HandEvaluator.Hand handRank = evaluator.EvaluateHand(playerHand);
         Debug.Log(handRank);
         if (handRank != HandEvaluator.Hand.LOSE)
         {
@@ -79,7 +79,7 @@ public class PokerGameManager : GameManager
         {
             // Reseting the deck and card slots
             deck.ShuffleDeck();
-            hand.Clear();
+            playerHand.Clear();
 
             if (credits >= bet)
             {
@@ -92,7 +92,7 @@ public class PokerGameManager : GameManager
                     for (int i = 0; i < 5; i++)
                     {
                         Card newCard = deck.DealCard();
-                        hand.Add(newCard);
+                        playerHand.Add(newCard);
                         cardSlots[i].visuals.TurnCardFaceUp();
                         cardSlots[i].visuals.UpdateCardVisuals();
                         cardSlots[i].visuals.SetCardVisuals(newCard.suit, newCard.number);
