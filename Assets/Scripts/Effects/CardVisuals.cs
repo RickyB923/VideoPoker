@@ -88,9 +88,9 @@ public class CardVisuals : MonoBehaviour
     public IEnumerator PlayCardFlipEffect()
     {
         TurnCardFaceDown();
-        GameManager.Instance.display.SetAllButtonsActive(false);
+        GameManager.Instance.display.dealButton.enabled = false;
         yield return new WaitForSeconds(0.2f);
-        GameManager.Instance.display.SetAllButtonsActive(true);
+        GameManager.Instance.display.dealButton.enabled = true;
         TurnCardFaceUp();
     }
     public void TurnCardFaceDown()

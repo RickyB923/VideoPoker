@@ -3999,7 +3999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5120949241102223106, guid: 68c6ea4b82c247b48a2f9506a301e192, type: 3}
       propertyPath: buttons.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5120949241102223106, guid: 68c6ea4b82c247b48a2f9506a301e192, type: 3}
       propertyPath: cardSlots.Array.size

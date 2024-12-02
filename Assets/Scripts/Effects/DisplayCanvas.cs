@@ -12,7 +12,7 @@ public class DisplayCanvas : MonoBehaviour
     [SerializeField] public TextMeshProUGUI mainMessageText;
     [SerializeField] public GameObject playAgain;
     [SerializeField] public GameObject deal;
-    private Button dealButton;
+    public Button dealButton;
 
     [SerializeField] public Button[] buttons;
     [SerializeField] CardSlot[] cardSlots;
@@ -55,11 +55,13 @@ public class DisplayCanvas : MonoBehaviour
                 break;
         }
         mainMessageDisplay.SetActive(true);
-        dealButton.enabled = false;
+        //dealButton.enabled = false;
+        SetAllButtonsActive(false);
         yield return new WaitForSeconds(messageDisplayTime);
-        dealButton.enabled = true;
+        //dealButton.enabled = true;
         mainMessageDisplay.SetActive(false);
-        foreach(CardSlot slot in cardSlots)
+        SetAllButtonsActive(true);
+        foreach (CardSlot slot in cardSlots)
         {
             slot.visuals.TurnCardFaceDown();
         }
@@ -70,8 +72,10 @@ public class DisplayCanvas : MonoBehaviour
         mainMessageText.text = message;
         mainMessageDisplay.SetActive(true);
         SetAllButtonsActive(false);
+        dealButton.enabled = false;
         yield return new WaitForSeconds(messageDisplayTime);
         SetAllButtonsActive(true);
+        dealButton.enabled = true;
         mainMessageDisplay.SetActive(false);
     }
     public IEnumerator DisplayInbetweenGameScreen(string message)

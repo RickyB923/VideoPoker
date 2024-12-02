@@ -26,7 +26,7 @@ public class ButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     public void OnPointerExit(PointerEventData eventData)
     {
         if (image == null) return;
-        image.transform.localScale -= Vector3.one * imageSizeIncrease;
+        image.transform.localScale = originalSize;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

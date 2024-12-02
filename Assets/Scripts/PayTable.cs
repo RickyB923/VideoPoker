@@ -23,15 +23,15 @@ public class PayTable : ScriptableObject
 
     public void Initialize()
     {
-        handTypes = new int[8];
-        //handTypes[0] = fiveBetRoyalFlush;
-        handTypes[0] = royalFlush;
-        handTypes[1] = straightFlush;
-        handTypes[2] = fourOfAKind;
-        handTypes[3] = fullHouse;
-        handTypes[4] = flush;
-        handTypes[5] = straight;
-        handTypes[6] = threeOfAKind;
-        handTypes[7] = twoPair;
+        handTypes = new int[9];
+        handTypes[0] = fiveBetRoyalFlush;
+        handTypes[1] = royalFlush;
+        handTypes[2] = straightFlush;
+        handTypes[3] = fourOfAKind;
+        handTypes[4] = fullHouse;
+        handTypes[5] = flush;
+        handTypes[6] = straight;
+        handTypes[7] = threeOfAKind;
+        handTypes[8] = twoPair;
     }
 }

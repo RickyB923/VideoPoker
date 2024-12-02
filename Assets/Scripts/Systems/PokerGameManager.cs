@@ -91,6 +91,7 @@ public class PokerGameManager : GameManager
         if(!hasDealtFirstHand)
         {
             // Reseting the deck and card slots
+            deck = new Deck();
             deck.ShuffleDeck();
             playerHand.Clear();
             if (credits >= bet)
@@ -104,6 +105,7 @@ public class PokerGameManager : GameManager
                     for (int i = 0; i < 5; i++)
                     {
                         Card newCard = deck.DealCard();
+                        Debug.Log($"{newCard.number} of {newCard.suit}");
                         playerHand.Add(newCard);
                         cardSlots[i].visuals.TurnCardFaceUp();
                         cardSlots[i].visuals.UpdateCardVisuals();
