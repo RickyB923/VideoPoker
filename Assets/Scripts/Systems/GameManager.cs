@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
     protected Deck deck;
     protected int credits = 100;
-    protected int bet = 1;
+    public int bet = 1;
     protected List<Card> playerHand;
     protected HandEvaluator evaluator;
 
@@ -33,5 +33,13 @@ public class GameManager : Singleton<GameManager>
         payTable.Initialize();
 
         gameInitialized?.Invoke();
-    }    
+    }
+    private void Update() // Cheat code for adding credits ;)
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            credits += 100;
+            creditsText.text = credits.ToString();
+        }
+    }
 }

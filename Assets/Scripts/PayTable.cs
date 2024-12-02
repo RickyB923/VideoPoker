@@ -9,6 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Pay Table", menuName = "Pay Table" )]
 public class PayTable : ScriptableObject
 {
+    public int fiveBetRoyalFlush;
     public int royalFlush;
     public int straightFlush;
     public int fourOfAKind;
@@ -17,13 +18,13 @@ public class PayTable : ScriptableObject
     public int straight;
     public int threeOfAKind;
     public int twoPair;
-    public int fiveBetRoyalFlush;
 
     public int[] handTypes;
 
     public void Initialize()
     {
         handTypes = new int[8];
+        //handTypes[0] = fiveBetRoyalFlush;
         handTypes[0] = royalFlush;
         handTypes[1] = straightFlush;
         handTypes[2] = fourOfAKind;

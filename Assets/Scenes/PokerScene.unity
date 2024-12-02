@@ -5581,6 +5581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldDestroyOnLoad: 1
+  bet: 1
   payTable: {fileID: 11400000, guid: 0624f2ef9fe0e6b4695b153f92c6940b, type: 2}
   cardPrefab: {fileID: 6547141557623235035, guid: 785a0a2138b52b846b658f8d45943ed9, type: 3}
   cardSlots:
@@ -7552,6 +7553,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783887285}
   m_CullTransparentMesh: 1
+--- !u!1001 &1802603651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136328, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226175892734136331, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 720fbd70b386cf14092f4ee5ed2b7eeb, type: 3}
 --- !u!114 &1810143988 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7216295682211146515, guid: cf10cdbec79596941be12757a160c8e9, type: 3}

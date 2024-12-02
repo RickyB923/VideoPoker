@@ -77,13 +77,19 @@ public class PokerGameManager : GameManager
         }
         EvaluateHand();
     }
-    void EvaluateHand()
+    void EvaluateHand() // Evaluates the hand and gives credits based on the pay table values
     {
         HandEvaluator.Hand handRank = evaluator.EvaluateHand(playerHand);
-        Debug.Log(handRank);
         if (handRank != HandEvaluator.Hand.LOSE)
         {
-            credits += (payTable.handTypes[(int)handRank]) * bet;
+            if(handRank == HandEvaluator.Hand.FIVE_BET_ROYAL_FLUSH)
+            {
+                credits += payTable.handTypes[0];
+            }
+            else
+            {
+                credits += (payTable.handTypes[(int)handRank]) * bet;
+            }
             creditsText.text = credits.ToString();
         }
         StartCoroutine(display.DisplayEvaluationMessage(handRank));

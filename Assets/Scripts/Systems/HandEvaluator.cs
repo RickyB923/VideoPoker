@@ -7,6 +7,7 @@ public class HandEvaluator
 {
     public enum Hand
     {
+        FIVE_BET_ROYAL_FLUSH,
         ROYAL_FLUSH,
         STRAIGHT_FLUSH,
         FOUR_OF_A_KIND,
@@ -19,6 +20,8 @@ public class HandEvaluator
     }
     public Hand EvaluateHand(List<Card> hand)
     {
+
+        if (IsRoyalFlush(hand) && GameManager.Instance.bet == 5) return Hand.FIVE_BET_ROYAL_FLUSH;
         if (IsRoyalFlush(hand)) return Hand.ROYAL_FLUSH;
         if (IsStraightFlush(hand)) return Hand.STRAIGHT_FLUSH;
         if (IsFourOfAKind(hand)) return Hand.FOUR_OF_A_KIND;

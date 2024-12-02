@@ -160,7 +160,7 @@ public class BlackJackGameManager : GameManager
         }
         AddCardToHand(i, houseCardSlots, houseHand);
     }
-    public void Stay()
+    public void Stay() // Initiates the house's turn and determines the winner
     {
         playerHandValue = EvaluateHand(playerHand);
         while(ShouldHouseHit())
@@ -168,18 +168,21 @@ public class BlackJackGameManager : GameManager
             HouseHits();
         }
         houseHandValue = EvaluateHand(houseHand);
-
-        if(houseHandValue > 21)
+        DetermineWinner();
+    }
+    void DetermineWinner() // Compares the player's hand and the house's hand
+    {
+        if (houseHandValue > 21)
         {
             StartCoroutine(display.DisplayInbetweenGameScreen("House Busts, You Win!"));
             PlayerWins();
         }
-        else if(playerHandValue >= houseHandValue)
+        else if (playerHandValue >= houseHandValue)
         {
             StartCoroutine(display.DisplayInbetweenGameScreen("You Win!"));
             PlayerWins();
         }
-        else if(playerHandValue < houseHandValue)
+        else if (playerHandValue < houseHandValue)
         {
             StartCoroutine(display.DisplayInbetweenGameScreen("House Wins"));
             PlayerLoses();
